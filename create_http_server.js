@@ -3,7 +3,10 @@ const http = require('http');
 
 // create server
 const server = http.createServer((request, response) => {
-    response.end('hello http server'); // response body 
+    // response.end('hello http server'); // response body 
+    
+    response.setHeader('content-type','text/html;charset=utf-8');
+    response.end('哈囉');
 });
 
 // listen port then start server
