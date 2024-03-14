@@ -6,7 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel ="stylesheet" href = "./style.css"/>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px solid rgb(132, 40, 40);
+            font-family: sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        th,
+        td {
+            border: 2px solid #080200;
+            padding: 18px 20px;
+        }
+
+        tbody>tr:nth-of-type(even) {
+            background-color: rgb(242, 243, 175);
+        }
+    </style>
 </head>
 
 <body>
@@ -32,7 +50,14 @@
             <td>12</td>
         </tr>
     </table>
-    <script src="./script.js"></script>
+    <script>
+        let tds = document.querySelectorAll('td');
+        tds.forEach(item => {
+            item.onclick = function () {
+                this.style.background = '#eeb7ac';
+            }
+        })
+    </script>
 </body>
 
 </html>
