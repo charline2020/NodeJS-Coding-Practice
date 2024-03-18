@@ -34,10 +34,13 @@ const server = http.createServer((request, response) => {
             switch(err.code){
                 case 'ENOENT':
                     response.statusCode = 404;
-                    response.end('<h1>404 not found</h1>')
+                    response.end('<h1>404 not found</h1>');
                 case 'EPERM':
                     response.statusCode = 403;
-                    response.end('<h1>403 forbidden</h1>')
+                    response.end('<h1>403 forbidden</h1>');
+                default:
+                    response.statusCode=500;
+                    response.end('<h1>internel server error</h1>');
             }
             // response.statusCode = 500;
             // response.end('not found ');
