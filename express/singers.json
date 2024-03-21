@@ -1,0 +1,44 @@
+{
+    "singers": [
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/6eUKZXaKkcviH0Ku9w2n3V"
+            },
+            "followers": {
+                "href": null,
+                "total": 56373726
+            },
+            "genres": [
+                "pop",
+                "uk pop"
+            ],
+            "href": "https://api.spotify.com/v1/artists/6eUKZXaKkcviH0Ku9w2n3V",
+            "id": "1",
+            "images": "https://i.scdn.co/image/f55cab0739390cf3b2c2f773b9c779b2f0ae8a99",
+            "name": "Ed Sheeran",
+            "popularity": 98,
+            "type": "artist",
+            "uri": "spotify:artist:6eUKZXaKkcviH0Ku9w2n3V"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02"
+            },
+            "followers": {
+                "href": null,
+                "total": 25341024
+            },
+            "genres": [
+                "pop",
+                "post-teen pop"
+            ],
+            "href": "https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02",
+            "id": "2",
+            "images": "https://i.scdn.co/image/62b33d12e2b9a033cf77585f6e3d4b2c6b3a63a1",
+            "name": "Taylor Swift",
+            "popularity": 95,
+            "type": "artist",
+            "uri": "spotify:artist:06HL4z0CvFAxyc27GXpf02"
+        }
+    ]
+}
