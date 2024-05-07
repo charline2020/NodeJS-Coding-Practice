@@ -32,32 +32,37 @@
         </div>
         <hr />
         <div class="accounts">
-            
-            <div class="panel ">
+          <% accounts.forEach(item=> { %>
+            <div class="panel <%= item.type === '-1' ? 'panel-danger' : 'panel-success'%>">
               <div class="panel-heading">
+                <%= item.happenTime %>
               </div>
               <div class="panel-body">
                 <div class="col-xs-6">
+                  <%= item.item %>
                 </div>
                 <div class="col-xs-2 text-center">
-                  <span class="label ">
+                  <span class="label <%= item.type === '-1' ? 'label-warning' : 'label-success'%> ">
+                    <%= item.type==='-1' ? '支出' : '收入' %>
                   </span>
                 </div>
                 <div class="col-xs-2 text-right">
+                  <%= item.amount %> 元
                 </div>
                 <div class="col-xs-2 text-right">
-                  <a class="delBtn" >
+                  <a href="/account/<%= item.id %>">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                   </a>
                 </div>
               </div>
             </div>
+            <% }) %>         
         </div>
       </div>
     </div>
   </div>
 </body>
-<!-- <script>
+<script>
   //获取所有的 delBtn
   let delBtns = document.querySelectorAll('.delBtn');
 
@@ -72,6 +77,6 @@
       }
     });
   })
-</script> -->
+</script>
 
 </html>
