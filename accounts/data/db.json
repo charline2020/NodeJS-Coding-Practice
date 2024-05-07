@@ -1,0 +1,27 @@
+{
+  "account": [
+    {
+      "id": "iVE7-W8RG8",
+      "item": "手錶",
+      "happenTime": "2024-05-28",
+      "type": "-1",
+      "amount": "7000",
+      "remark": "智慧手錶"
+    },
+    {
+      "id": "nYBBmS_8AO",
+      "item": "薪水",
+      "happenTime": "2024-05-08",
+      "type": "1",
+      "amount": "50000",
+      "remark": ""
+    },
+    {
+      "item": "phone",
+      "happenTime": "2024-05-30",
+      "type": "-1",
+      "amount": "15000",
+      "remark": "iphone8"
+    }
+  ]
+}
