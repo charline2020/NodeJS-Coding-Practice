@@ -19,12 +19,13 @@ const AccountModel = require('../models/accountmodel');
 
 /* list of accounts */
 router.get('/account', function (req, res, next) {
-  let accounts = db.get('account').value();
-  // console.log(accounts);
+  AccountModel.find().sort({ happenTime: -1 }).then(data => { 
+    // console.log(data);
+    res.render('list',{accounts: data, moment:moment});
 
-  // res.render('index', { title: 'Express' });
-  // res.send('account list');
-  res.render('list', { accounts: accounts }); // views -> list.ejs
+  }).catch(err => {
+    res.status(500).send('Failed to read');
+  })
 });
 
 /* create account  */
