@@ -50,9 +50,13 @@ router.post('/account', (req, res) => {
 // delete record
 router.get('/account/:id', (req, res) => {
   let id = req.params.id;
-  db.get('account').remove({ id: id }).write();
-  // res.send('delete');
-  res.render('success', { message: '删除成功', redirectUrl: '/account' });
+  // db.get('account').remove({ id: id }).write();
+
+  AccountModel.deleteOne({_id: id}).then(data => {
+    res.render('success', { message: 'Successfully deleted', redirectUrl: '/account' });
+  }).catch(err =>{
+    res.status(500).send('Failed to delete');
+  })
 })
 
 module.exports = router;
