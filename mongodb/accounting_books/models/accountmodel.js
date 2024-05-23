@@ -1,21 +1,21 @@
 const mongoose = require('mongoose');
 
 // create model structure
-let Accountchema = new mongoose.Schema({
-    title: {
+let AccountSchema = new mongoose.Schema({
+    item: {
         type:String,
         required: true
     },
-    time: Date,
+    happenTime: Date,
     type: {
         type: Number,
         default: -1
     },
-    account:{
+    amount:{
         type: Number,
         requried: true
     },
-    remarks: {
+    remark: {
         type: String
     }
 });
