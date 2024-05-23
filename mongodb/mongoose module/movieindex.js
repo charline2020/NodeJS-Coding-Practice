@@ -1,24 +1,19 @@
-
 // import db file
 const db = require('./db/db');
 
-// import mongoose
-const mongoose = require('mongoose')
-
 // import bookmodel
-const bookModel = require('./models/bookmodel');
+const MovieModel = require('./models/moviemodel');
 
 // use db function
 // db is a functions and success and error also are functions
 db(()=>{
   
-    const newBook = {
-        name: "The Women: A Novel",
-        author: 'Kristin Hannah',
-        price: 50
+    const newMovie = {
+        title: "Inside Out 2",
+        director: 'Kelsey Mann'
     };
    
-    bookModel.create(newBook).then(data =>{
+    MovieModel.create(newMovie).then(data =>{
         console.log('文檔新增成功', data)
     }).catch(err=>{
         console.log('文檔新增失败', err)
