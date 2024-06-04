@@ -1,21 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-// import lowdb
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-
-const adapter = new FileSync(__dirname + '/../data/db.json');
-const db = low(adapter)
-
-// import shortid
-const shortid = require('shortid')
-
 // import moment
 const moment = require('moment')
 // console.log(moment('2023-02-04').toDate())
 
-const AccountModel = require('../models/accountmodel');
+const AccountModel = require('../../models/accountmodel');
 
 /* list of accounts */
 router.get('/account', function (req, res, next) {
