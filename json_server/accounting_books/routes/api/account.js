@@ -11,18 +11,19 @@ const AccountModel = require('../../models/accountmodel');
 router.get('/account', function (req, res, next) {
   AccountModel.find().sort({ happenTime: -1 }).then(data => { 
     // console.log(data);
-    res.render('list',{accounts: data, moment:moment});
+    res.json({
+      code: '0000', // can use 000000 or 20000
+      msg: 'Successfully read',
+      data: data
+    })
 
   }).catch(err => {
-    res.status(500).send('Failed to read');
+    res.json({
+      code: '1001',
+      msg:'Failed to read',
+      data: null
+    })
   })
-});
-
-/* create account  */
-router.get('/account/create', function (req, res, next) {
-  // res.render('index', { title: 'Express' });
-  // res.send('account create');
-  res.render('create');
 });
 
 router.post('/account', (req, res) => {
@@ -31,22 +32,89 @@ router.post('/account', (req, res) => {
     ...req.body,
     time: moment(req.body.happenTime).toDate()
   }).then(data => {
-    res.render('success', { message: 'Successfully added', redirectUrl: '/account' });
+    res.json({
+      code: '0000',
+      msg: 'Successfully add',
+      data: data
+    })
+
   }).catch(err => {
-    res.status(500).send('Failed to add');
+    res.json({
+      code: '1002',
+      msg: 'Failed to add',
+      data: null
+    })
   })
 });
 
 // delete record
-router.get('/account/:id', (req, res) => {
+router.delete('/account/:id', (req, res) => {
   let id = req.params.id;
   // db.get('account').remove({ id: id }).write();
 
   AccountModel.deleteOne({_id: id}).then(data => {
-    res.render('success', { message: 'Successfully deleted', redirectUrl: '/account' });
+    res.json({
+      code: '0000',
+      msg: 'Successfully deleted',
+      data:{}
+    })
   }).catch(err =>{
-    res.status(500).send('Failed to delete');
+    res.json({
+      code: '1003',
+      msg: 'Failed to deltet',
+      data: null
+    })
   })
 })
+
+// get single record
+router.get('/account/:id', (req,res)=>{
+  let {id} = req.params;
+  AccountModel.findById(id).then(data=>{
+    res.json({
+      code: '0000',
+      msg: 'Successfully read',
+      data: data
+    })
+  }).catch(err =>{
+    res.json({
+      code: '1004',
+      msg: 'Failed to read single data',
+      data: null
+    })
+  })
+})
+
+
+// updat single record info
+router.patch('/account/:id', (req, res)=>{
+  let {id} = req.params;
+
+  AccountModel.updateOne({_id: id}, req.body).then(data =>{
+    
+    AccountModel.findById(id).then(data=>{
+      res.json({
+        code: '0000',
+        msg: 'Successfully update',
+        data: data
+      })
+    }).catch(err =>{
+      res.json({
+        code: '1004',
+        msg: 'Failed to read single data',
+        data: null
+      })
+
+    })
+    
+  }).catch(err =>{
+    res.json({
+      code: '1005',
+      msg: 'Failed to update single data',
+      data: null
+    })
+  })
+})
+
 
 module.exports = router;
