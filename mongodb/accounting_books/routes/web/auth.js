@@ -39,7 +39,7 @@ router.post('/login', (req,res)=>{
     // res.render('auth/login');
 })
 
-router.get('/logout', (req,res)=>{
+router.post('/logout', (req,res)=>{
     req.session.destroy(()=>{
         res.render('success', { message: 'Successfully logout', redirectUrl: '/login' });
     })
