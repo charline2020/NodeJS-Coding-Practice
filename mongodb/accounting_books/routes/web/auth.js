@@ -17,4 +17,25 @@ router.post('/reg', (req,res)=>{
         })    
 })
 
+router.get('/login', (req,res)=>{
+    res.render('auth/login');
+})
+
+router.post('/login', (req,res)=>{
+    let {username, password} = req.body;
+
+    usermodel.findOne({username: username, password:md5(password)}).then(data => {
+        if (!data){
+            res.send('wrong username or password');
+        }
+        else{
+            req.session.username = data.username;
+            req.session._id = data._id;
+            res.render('success', { message: 'Successfully login', redirectUrl: '/account' });
+        }
+    }).catch(err =>{
+        res.status(500).send('Login failed');
+    })
+    // res.render('auth/login');
+})
 module.exports = router;
