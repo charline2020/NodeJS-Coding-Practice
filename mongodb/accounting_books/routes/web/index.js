@@ -1,13 +1,12 @@
-var express = require('express');
-var router = express.Router();
-
-let checklogin = require('../../middlewares/checklogin');
-
-// import moment
+const express = require('express');
 const moment = require('moment')
-// console.log(moment('2023-02-04').toDate())
-
 const AccountModel = require('../../models/accountmodel');
+const router = express.Router();
+const checklogin = require('../../middlewares/checklogin');
+
+router.get('/', (req,res)=>{
+  res.redirect('/account');
+})
 
 /* list of accounts */
 router.get('/account', checklogin, function (req, res, next) {
