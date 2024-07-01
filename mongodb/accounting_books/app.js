@@ -6,7 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/web/index');
 const authRouter = require('./routes/web/auth');
+
 const accountRouter = require('./routes/api/account');
+const authApiRouter = require('./routes/api/auth');
 
 const session = require('express-session');
 const mongostore = require('connect-mongo');
@@ -45,6 +47,7 @@ app.use('/', indexRouter);
 app.use('/api', accountRouter);
 
 app.use('/', authRouter);
+app.use('/api', authApiRouter);
 
 // app.use('/users', usersRouter);
 
