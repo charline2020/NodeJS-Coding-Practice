@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/web/index');
 const authRouter = require('./routes/web/auth');
+const accountRouter = require('./routes/api/account');
 
 const session = require('express-session');
 const mongostore = require('connect-mongo');
@@ -41,6 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // website page
 app.use('/', indexRouter);
+app.use('/api', accountRouter);
+
 app.use('/', authRouter);
 
 // app.use('/users', usersRouter);
